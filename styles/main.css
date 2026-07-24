@@ -1,0 +1,441 @@
+:root {
+  --color-bg: #d1d5db;
+  --color-text: #111827;
+  --color-text-secondary: #9ca3af;
+  --color-bg-dark: #111827;
+  --color-bg-light: #f8fafc;
+  --color-white: #fff;
+  --color-border: #cbd5e1;
+  --color-shadow: rgba(0, 0, 0, 0.25);
+  --color-shadow-lg: rgba(15, 23, 42, 0.12);
+  --color-shadow-hover: rgba(0, 0, 0, 0.28);
+
+  --color-status-free: #16a34a;
+  --color-status-reserved: #7dd3fc;
+  --color-status-occupied: #dc2626;
+  --color-status-cover: #f97316;
+  --color-status-admin: #f59e0b;
+
+  --color-button-default: #374151;
+  --color-button-primary: #3b82f6;
+  --color-button-delete: #ef4444;
+  --color-button-focus: #2563eb;
+
+  --color-success: #86efac;
+  --color-error: #fca5a5;
+
+  --spacing-xs: 6px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 14px;
+  --spacing-xl: 18px;
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 9px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 14px;
+
+  --shadow-md: 0 2px 10px var(--color-shadow);
+  --shadow-lg: 0 3px 15px rgba(0, 0, 0, 0.18);
+  --shadow-xl: 0 8px 24px var(--color-shadow-lg);
+  --shadow-dialog: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  touch-action: manipulation;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================================================
+   Header
+   ======================================================================== */
+header {
+  min-height: 66px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-dark);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  gap: 3px;
+}
+
+.brand strong {
+  font-size: 1.15rem;
+}
+
+.sync-status {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.counters {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.counter {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+
+.counter.free {
+  background: #166534;
+  color: var(--color-white);
+}
+
+.counter.reserved {
+  background: #0369a1;
+  color: var(--color-white);
+}
+
+.counter.occupied {
+  background: #7f1d1d;
+  color: var(--color-white);
+}
+
+.counter.cover {
+  background: #9a3412;
+  color: var(--color-white);
+}
+
+.counter.total {
+  background: #1e293b;
+  color: var(--color-white);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* ========================================================================
+   Buttons
+   ======================================================================== */
+button {
+  border: 0;
+  border-radius: var(--border-radius-md);
+  padding: 10px 12px;
+  font-weight: 700;
+  background: var(--color-button-default);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: transform 100ms ease, background 100ms ease;
+  font-size: 0.875rem;
+}
+
+button:hover {
+  background: #4b5563;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-button-focus);
+  outline-offset: 2px;
+}
+
+button.primary {
+  background: var(--color-button-primary);
+}
+
+button.primary:hover {
+  background: #2563eb;
+}
+
+button.active-danger {
+  background: var(--color-button-delete);
+}
+
+button.active-danger:hover {
+  background: #dc2626;
+}
+
+/* ========================================================================
+   Admin Bar
+   ======================================================================== */
+.admin-bar {
+  padding: var(--spacing-sm) 10px;
+  background: var(--color-status-admin);
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  font-weight: 700;
+  color: var(--color-white);
+  flex-wrap: wrap;
+}
+
+.admin-bar[hidden] {
+  display: none;
+}
+
+.admin-bar button {
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+
+/* ========================================================================
+   Main Content
+   ======================================================================== */
+main {
+  flex: 1;
+  min-height: 0;
+  padding: var(--spacing-sm);
+}
+
+.viewport {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  overscroll-behavior: contain;
+}
+
+.plan {
+  position: relative;
+  margin: var(--spacing-xl) auto;
+  width: 1500px;
+  height: auto;
+  aspect-ratio: 1871 / 1323;
+  min-height: 1060px;
+  background: var(--color-white);
+  box-shadow: 0 0 0 1px var(--color-border), var(--shadow-xl);
+}
+
+.plan > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.chairs-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ========================================================================
+   Chairs
+   ======================================================================== */
+.chair {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: var(--border-radius-sm);
+  background: var(--color-status-free);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 2px 4px var(--color-shadow-hover);
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  transition: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chair:active,
+body.admin .chair:active {
+  transform: translate(-50%, -50%);
+}
+
+.chair:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 3px 6px var(--color-shadow-hover);
+}
+
+.chair::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chair.reserved {
+  background: var(--color-status-reserved);
+}
+
+.chair.cover {
+  background: var(--color-status-cover);
+}
+
+.chair.occupied {
+  background: var(--color-status-occupied);
+}
+
+/* Admin mode chairs */
+body.admin .chair {
+  box-shadow: 0 0 0 2px var(--color-button-focus), 0 2px 5px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+}
+
+body.admin .chair:active {
+  cursor: grabbing;
+}
+
+/* Delete mode chairs */
+body.delete-mode .chair {
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-status-occupied);
+}
+
+/* ========================================================================
+   Dialog
+   ======================================================================== */
+dialog {
+  border: 0;
+  border-radius: var(--border-radius-xl);
+  padding: 22px;
+  box-shadow: var(--shadow-dialog);
+  min-width: 290px;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+dialog form {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+dialog h2 {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 1.125rem;
+}
+
+dialog label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+dialog input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+dialog input:focus {
+  outline: none;
+  border-color: var(--color-button-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin: 0;
+  padding: var(--spacing-sm) 0;
+}
+
+.error[hidden] {
+  display: none;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.dialog-actions button {
+  flex: 1;
+}
+
+/* ========================================================================
+   Responsive Design
+   ======================================================================== */
+@media (max-width: 850px) {
+  header {
+    min-height: 112px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    min-width: auto;
+  }
+
+  .counters {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .actions button,
+  .admin-bar button {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .counter {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: var(--spacing-sm) var(--spacing-xs);
+  }
+
+  .brand strong {
+    font-size: 1rem;
+  }
+
+  .counters {
+    gap: 4px;
+  }
+
+  .counter {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
+
+  .actions button {
+    padding: 8px 8px;
+    font-size: 0.7rem;
+  }
+}
