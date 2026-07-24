@@ -156,8 +156,8 @@ function render() {
     button.className = "chair" + (chairStatus === "free" ? "" : " " + chairStatus);
     button.style.left = chair.x + "%";
     button.style.top = chair.y + "%";
-    button.style.width = "0.82%";
-    button.style.height = "1.16%";
+    button.style.width = "2%";
+    button.style.height = "2.5%";
     button.dataset.id = chair.id;
     button.setAttribute(
       "aria-label",

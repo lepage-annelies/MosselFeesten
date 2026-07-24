@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#111827">
+  <title>Tafelplan 2026</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <strong>Tafelplan 2026</strong>
+      <span id="saveStatus" style="color: rgb(134, 239, 172);">Realtime verbonden</span>
+    </div>
+
+    <div class="counters">
+      <span class="counter free">Vrij: <b id="freeCount">597</b></span>
+      <span class="counter reserved">Gereserveerd: <b id="reservedCount">20</b></span>
+      <span class="counter cover">Te dekken: <b id="coverCount">2</b></span>
+      <span class="counter occupied">Bezet: <b id="occupiedCount">31</b></span>
+      <span class="counter total">Totaal: <b id="totalCount">650</b></span>
+    </div>
+
+    <div class="actions">
+      <button id="fullBtn">Volledig scherm</button>
+      <button id="adminBtn">🔒 Beheer</button>
+    </div>
+  </header>
+
+  <div id="adminBar" hidden>
+    <strong>Beheermodus</strong>
+    <button id="addBtn">Stoel toevoegen</button>
+    <button id="deleteModeBtn">Stoel verwijderen</button>
+    <button id="resetBtn">Alles groen</button>
+    <button id="saveLayoutBtn" class="primary">Opslaan</button>
+    <button id="cancelAdminBtn">Annuleren</button>
+  </div>
+
+  <main>
+    <div id="viewport">
+      <div id="plan">
+        <img id="planImage" src="./tafelplan.png" alt="Tafelplan 2026">
+        <div id="chairs" aria-label="Aanklikbare stoelen"></div>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="pinDialog">
+    <form method="dialog">
+      <h2>Beheermodus</h2>
+      <label for="pinInput">Pincode</label>
+      <input id="pinInput" type="password" inputmode="numeric" maxlength="8" autocomplete="off">
+      <p id="pinError" class="error" hidden>Onjuiste pincode.</p>
+      <div class="dialogActions">
+        <button value="cancel">Annuleren</button>
+        <button id="pinOk" value="default" class="primary">Openen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./chairs.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
