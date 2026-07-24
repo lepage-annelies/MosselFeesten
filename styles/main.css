@@ -154,6 +154,8 @@ button {
   cursor: pointer;
   transition: transform 100ms ease, background 100ms ease;
   font-size: 0.875rem;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 button:hover {
@@ -355,6 +357,7 @@ dialog input {
   border-radius: var(--border-radius-md);
   font-size: 1rem;
   font-family: inherit;
+  min-height: 44px;
 }
 
 dialog input:focus {
@@ -385,13 +388,51 @@ dialog input:focus {
 }
 
 /* ========================================================================
-   Responsive Design
+   Responsive Design - Tablet (≥768px)
+   ======================================================================== */
+@media (min-width: 768px) {
+  header {
+    min-height: 70px;
+    padding: var(--spacing-md);
+  }
+
+  .brand strong {
+    font-size: 1.25rem;
+  }
+
+  .sync-status {
+    font-size: 0.8rem;
+  }
+
+  .counter {
+    font-size: 0.95rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .actions button {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .admin-bar button {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ========================================================================
+   Responsive Design - Medium screens (850px - 1024px)
    ======================================================================== */
 @media (max-width: 850px) {
   header {
     min-height: 112px;
     align-items: flex-start;
     flex-wrap: wrap;
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 
   .brand {
@@ -402,40 +443,82 @@ dialog input:focus {
     order: 3;
     width: 100%;
     justify-content: flex-start;
+    gap: 6px;
   }
 
   .actions button,
   .admin-bar button {
-    padding: 8px 10px;
-    font-size: 0.75rem;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    min-height: 40px;
   }
 
   .counter {
     font-size: 0.75rem;
     padding: 6px 10px;
   }
+
+  .plan {
+    width: 90%;
+    min-height: 600px;
+  }
 }
 
+/* ========================================================================
+   Responsive Design - Small screens (<600px)
+   ======================================================================== */
 @media (max-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
+
   header {
-    padding: var(--spacing-sm) var(--spacing-xs);
+    min-height: 100px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-sm);
   }
 
   .brand strong {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .sync-status {
+    font-size: 0.65rem;
   }
 
   .counters {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
     gap: 4px;
   }
 
   .counter {
-    font-size: 0.7rem;
-    padding: 5px 8px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 6px;
   }
 
   .actions button {
-    padding: 8px 8px;
-    font-size: 0.7rem;
+    padding: 8px 10px;
+    font-size: 0.65rem;
+    min-height: 38px;
+  }
+
+  .admin-bar {
+    padding: var(--spacing-xs) 8px;
+    gap: 6px;
+  }
+
+  .admin-bar button {
+    padding: 6px 8px;
+    font-size: 0.65rem;
+    min-height: 36px;
+  }
+
+  .plan {
+    width: 95%;
+    min-height: 400px;
+    margin: var(--spacing-sm) auto;
   }
 }

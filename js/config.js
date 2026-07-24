@@ -18,10 +18,10 @@ export const CONFIG = {
   SYNC_TEXT_TIMEOUT: 700,
   POSITION_PRECISION: 10, // 1 decimal place for chair positions
   ALIGNMENT_TOLERANCE: 0.16,
-  // Dimensions
+  // Dimensions - Increased for better touch targets
   CHAIR: {
-    WIDTH: 0.82,   // percentage
-    HEIGHT: 1.16,  // percentage
+    WIDTH: 2.0,    // percentage (increased from 0.82%)
+    HEIGHT: 2.5,   // percentage (increased from 1.16%)
   },
   // Status values
   STATUS_VALUES: {

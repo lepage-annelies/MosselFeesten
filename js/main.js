@@ -124,7 +124,7 @@ DOM.fullBtn.addEventListener('click', async () => {
   }
 });
 
-Document.addEventListener('fullscreenchange', () => {
+document.addEventListener('fullscreenchange', () => {
   DOM.fullBtn.textContent = document.fullscreenElement ? 'Scherm sluiten' : 'Volledig scherm';
 });
 
